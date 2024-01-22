@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drop Down </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+		
+		<div class="f-group">
+			<label for="">Country</label>
+			<select name="slct1" id="slct1" onchange="populate(this.id,'slct2','slct3')">
+				<option value=""> -- Choose Country -- </option>
+				<option value="pakistan">PAKISTAN</option>
+                <option value="india">INDIA</option>
+				<option value="china">CHINA</option>
+			</select>
+		</div>
+		
+		<div class="f-group">
+			<label for="">City</label>
+			<select name="slct2" id="slct2"></select>
+		</div>
+        
+		<div class="f-group">
+			<label for="">State</label>
+			<select name="slct3" id="slct3"></select>
+		</div>
+	</div>
+    <script>
+		
+		function populate(s1,s2,s3)
+		{
+			var s1 = document.getElementById(s1);
+			var s2 = document.getElementById(s2);
+            var s3 = document.getElementById(s3);
+
+			s2.innerHTML = "";
+
+			if(s1.value == "pakistan")
+			{
+				var optionArray = ['lahore|Lahore','islamabad|Islamabad','karachi|Karachi','multan|Multan'];
+			}
+			else if(s1.value  == 'india')
+			{
+				var optionArray = ['delhi|Delhi','mumbai|Mumbai','bangalore|Bangalore','hyderabad|Hyderabad'];
+			}
+            else if(s1.value  == 'china')
+			{
+				var optionArray = ['beijing|Beijing','shanghai|Shanghai','tainjin|Tainjin'];
+			}
+
+			for(var option in optionArray)
+			{
+				var pair = optionArray[option].split("|");
+				var newoption = document.createElement("option");
+
+				newoption.value = pair[0];
+				newoption.innerHTML=pair[1];
+				s2.options.add(newoption);
+			}
+
+            s3.innerHTML = "";
+            if(s2.value == "lahore",'islamabad','karachi','multan')
+			{
+				var optionArray = ['punjab|Punjab','punjab|Punajb','sindh|Sindh','multan|Multan'];
+			}
+			else if(s2.value  == 'delhi')
+			{
+				var optionArray = ['up|UP','mumbai|Mumbai','bangalore|Bangalore','hyderabad|Hyderabad'];
+			}
+            else if(s2.value  == 'beijing')
+			{
+				var optionArray = ['north china|North China','east central|East Central','china|China'];
+			}
+
+			for(var option in optionArray)
+			{
+				var pair = optionArray[option].split("|");
+				var newoption = document.createElement("option");
+
+				newoption.value = pair[0];
+				newoption.innerHTML=pair[1];
+				s3.options.add(newoption);
+			}
+
+
+
+		}
+
+	</script>
+	
+
+</body>
+</html>
